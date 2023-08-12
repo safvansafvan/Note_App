@@ -5,6 +5,7 @@ class CustomClr {
   static Color deepPurple = Colors.deepPurple;
   static Color kwhite = Colors.white;
   static Color kblack = Colors.black;
+  static Color kred = Colors.redAccent;
 }
 
 class CustomSize {
@@ -15,4 +16,8 @@ class CustomFuction {
   static texttStyle({required weight, required color, required double size}) {
     return TextStyle(fontSize: size, fontWeight: weight, color: color);
   }
+}
+
+class CustomHeight {
+  static var commonHeight = const SizedBox(height: 20);
 }

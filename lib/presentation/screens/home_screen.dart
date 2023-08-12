@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:note_app/controller/core/constant.dart';
+import 'package:note_app/presentation/screens/add_note/add_note.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -47,7 +48,14 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const AddNoteScreen(),
+            ),
+          );
+        },
         label: const Text("Note", style: TextStyle(fontSize: 13)),
         tooltip: "add new note",
         elevation: 15,
