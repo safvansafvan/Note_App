@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:note_app/controller/core/constant.dart';
+import 'package:note_app/controller/res/firestore.dart';
 
 class AddNoteScreen extends StatelessWidget {
   const AddNoteScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController subController = TextEditingController();
+    TextEditingController conController = TextEditingController();
+
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size(double.infinity, 100),
@@ -37,7 +41,12 @@ class AddNoteScreen extends StatelessWidget {
                       border: Border.all(color: CustomClr.kblack),
                     ),
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () async {
+                        await FireStore().addNotes(
+                          subject: subController.text,
+                          content: conController.text,
+                        );
+                      },
                       child: Text(
                         "Save",
                         style: CustomFuction.texttStyle(
@@ -57,6 +66,7 @@ class AddNoteScreen extends StatelessWidget {
           children: [
             CustomHeight.commonHeight,
             TextFormField(
+              controller: subController,
               maxLength: 20,
               decoration: const InputDecoration(
                 hintText: "Subject",
@@ -66,6 +76,7 @@ class AddNoteScreen extends StatelessWidget {
             CustomHeight.commonHeight,
             SizedBox(
               child: TextFormField(
+                controller: conController,
                 maxLines: null,
                 decoration: const InputDecoration(
                   border: InputBorder.none,
