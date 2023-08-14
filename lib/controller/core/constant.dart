@@ -6,6 +6,7 @@ class CustomClr {
   static Color kwhite = Colors.white;
   static Color kblack = Colors.black;
   static Color kred = Colors.redAccent;
+  static Color kgreen = Colors.green;
 }
 
 class CustomSize {

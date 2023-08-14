@@ -1,13 +1,14 @@
 import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:note_app/controller/core/constant.dart';
+import 'package:note_app/presentation/widgets/snackbar_widget.dart';
 import 'package:uuid/uuid.dart';
 
 class FireStore {
-  var isAddDataLoading = false;
   FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
 
-  Future addNotes({required String subject, required String content}) async {
-    isAddDataLoading = true;
+  Future addNotes(
+      {required String subject, required String content, context}) async {
     String id = const Uuid().v1();
     try {
       firebaseFirestore.collection('notes').doc(id).set({
@@ -16,10 +17,10 @@ class FireStore {
         'subject': subject,
         'date': DateTime.now()
       });
-      isAddDataLoading = false;
+      SnakBarWidget.snackBarWidget(
+          context: context, title: "Notes Added", clr: CustomClr.kgreen);
     } catch (e) {
       log(e.toString());
     }
-    isAddDataLoading = false;
   }
 }

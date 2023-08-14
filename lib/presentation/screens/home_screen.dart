@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:lottie/lottie.dart';
 import 'package:note_app/controller/core/constant.dart';
 import 'package:note_app/presentation/screens/add_note/add_note.dart';
 import 'package:note_app/presentation/screens/note_details/note_details.dart';
@@ -45,16 +47,14 @@ class HomeScreen extends StatelessWidget {
                 );
               }
               if (!snapshot.hasData) {
-                return const SliverFillRemaining(
-                  child: Center(
-                    child: Text("Empty"),
-                  ),
+                return SliverFillRemaining(
+                  child: Center(child: Lottie.asset("assets/empty.json")),
                 );
               }
               if (snapshot.data!.docs.isEmpty) {
-                return const SliverFillRemaining(
+                return SliverFillRemaining(
                   child: Center(
-                    child: Text("Empty"),
+                    child: Lottie.asset("assets/empty.json"),
                   ),
                 );
               }
@@ -72,12 +72,16 @@ class HomeScreen extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const NoteDetailsScreen(),
+                                builder: (context) => NoteDetailsScreen(
+                                  content: snap['content'],
+                                  date: DateFormat.yMEd()
+                                      .format(snap['date'].toDate()),
+                                  subject: snap['subject'],
+                                ),
                               ),
                             );
                           },
                           child: Container(
-                            height: 150,
                             color: Colors.deepPurple[300],
                             child: Padding(
                               padding: const EdgeInsets.all(15.0),
@@ -113,9 +117,10 @@ class HomeScreen extends StatelessWidget {
                                       Text(
                                         snap['subject'],
                                         style: CustomFuction.texttStyle(
-                                            weight: FontWeight.w500,
-                                            color: CustomClr.kblack,
-                                            size: 16),
+                                          weight: FontWeight.w500,
+                                          color: CustomClr.kblack,
+                                          size: 16,
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -129,15 +134,33 @@ class HomeScreen extends StatelessWidget {
                                             color: CustomClr.kblack,
                                             size: 16),
                                       ),
+                                      Expanded(
+                                        child: Text(
+                                          snap['content'],
+                                          style: CustomFuction.texttStyle(
+                                              weight: FontWeight.w500,
+                                              color: CustomClr.kblack,
+                                              size: 16),
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  CustomHeight.height10,
+                                  Row(
+                                    children: [
                                       Text(
-                                        snap['content'],
+                                        "Date: ",
                                         style: CustomFuction.texttStyle(
                                             weight: FontWeight.w500,
                                             color: CustomClr.kblack,
                                             size: 16),
                                       ),
+                                      Text(DateFormat.yMEd()
+                                          .format(snap['date'].toDate()))
                                     ],
-                                  ),
+                                  )
                                 ],
                               ),
                             ),

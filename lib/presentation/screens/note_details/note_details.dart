@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
-
 import '../../../controller/core/constant.dart';
 
 class NoteDetailsScreen extends StatelessWidget {
-  const NoteDetailsScreen({super.key});
+  const NoteDetailsScreen(
+      {super.key,
+      required this.subject,
+      required this.content,
+      required this.date});
+
+  final String subject;
+  final String content;
+  final String date;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +55,26 @@ class NoteDetailsScreen extends StatelessWidget {
                       size: 16),
                 ),
                 Text(
-                  "...........................",
+                  subject,
+                  style: CustomFuction.texttStyle(
+                      weight: FontWeight.w600,
+                      color: CustomClr.kblack,
+                      size: 16),
+                ),
+              ],
+            ),
+            CustomHeight.commonHeight,
+            Row(
+              children: [
+                Text(
+                  "Date:         ",
+                  style: CustomFuction.texttStyle(
+                      weight: FontWeight.w600,
+                      color: CustomClr.kblack,
+                      size: 16),
+                ),
+                Text(
+                  date,
                   style: CustomFuction.texttStyle(
                       weight: FontWeight.w600,
                       color: CustomClr.kblack,
@@ -66,14 +92,16 @@ class NoteDetailsScreen extends StatelessWidget {
                       color: CustomClr.kblack,
                       size: 16),
                 ),
-                Text(
-                  "...........................",
-                  style: CustomFuction.texttStyle(
-                      weight: FontWeight.w600,
-                      color: CustomClr.kblack,
-                      size: 15),
-                ),
-                CustomHeight.commonHeight,
+                SizedBox(
+                  child: Text(
+                    content,
+                    style: CustomFuction.texttStyle(
+                        weight: FontWeight.w600,
+                        color: CustomClr.kblack,
+                        size: 15),
+                    maxLines: null,
+                  ),
+                )
               ],
             )
           ],

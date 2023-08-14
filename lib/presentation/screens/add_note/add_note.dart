@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:note_app/controller/core/constant.dart';
 import 'package:note_app/controller/res/firestore.dart';
+import 'package:note_app/presentation/widgets/snackbar_widget.dart';
 
 class AddNoteScreen extends StatelessWidget {
   const AddNoteScreen({super.key});
@@ -9,7 +10,7 @@ class AddNoteScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController subController = TextEditingController();
     TextEditingController conController = TextEditingController();
-
+    GlobalKey<FormState> formKeyAdd = GlobalKey<FormState>();
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size(double.infinity, 100),
@@ -42,10 +43,18 @@ class AddNoteScreen extends StatelessWidget {
                     ),
                     child: TextButton(
                       onPressed: () async {
-                        await FireStore().addNotes(
-                          subject: subController.text,
-                          content: conController.text,
-                        );
+                        if (conController.text.isNotEmpty &&
+                            subController.text.isNotEmpty) {
+                          await FireStore().addNotes(
+                            subject: subController.text,
+                            content: conController.text,
+                          );
+                        } else {
+                          SnakBarWidget.snackBarWidget(
+                              context: context,
+                              title: "Add values",
+                              clr: CustomClr.kred);
+                        }
                       },
                       child: Text(
                         "Save",
@@ -62,30 +71,33 @@ class AddNoteScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
-        child: ListView(
-          children: [
-            CustomHeight.commonHeight,
-            TextFormField(
-              controller: subController,
-              maxLength: 20,
-              decoration: const InputDecoration(
-                hintText: "Subject",
-                prefixIcon: Icon(Icons.subject_rounded),
-              ),
-            ),
-            CustomHeight.commonHeight,
-            SizedBox(
-              child: TextFormField(
-                controller: conController,
-                maxLines: null,
+        child: Form(
+          key: formKeyAdd,
+          child: ListView(
+            children: [
+              CustomHeight.commonHeight,
+              TextFormField(
+                controller: subController,
+                maxLength: 20,
                 decoration: const InputDecoration(
-                  border: InputBorder.none,
-                  hintText: "Content",
-                  prefixIcon: Icon(Icons.content_paste),
+                  hintText: "Subject",
+                  prefixIcon: Icon(Icons.subject_rounded),
                 ),
               ),
-            )
-          ],
+              CustomHeight.commonHeight,
+              SizedBox(
+                child: TextFormField(
+                  controller: conController,
+                  maxLines: null,
+                  decoration: const InputDecoration(
+                    border: InputBorder.none,
+                    hintText: "Content",
+                    prefixIcon: Icon(Icons.content_paste),
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
