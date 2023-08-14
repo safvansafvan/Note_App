@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
 import 'package:note_app/controller/core/constant.dart';
 import 'package:note_app/presentation/screens/add_note/add_note.dart';
+import 'package:note_app/presentation/screens/edit_note/edit_note.dart';
 import 'package:note_app/presentation/screens/note_details/note_details.dart';
 import 'package:note_app/presentation/widgets/delete_dialog.dart';
 
@@ -139,15 +140,30 @@ class HomeScreen extends StatelessWidget {
                                               ),
                                             ),
                                             PopupMenuItem(
-                                              onTap: () {},
-                                              child: Row(
-                                                children: [
-                                                  Icon(
-                                                    Icons.edit,
-                                                    color: CustomClr.kblue,
-                                                  ),
-                                                  const Text("Edit")
-                                                ],
+                                              child: InkWell(
+                                                onTap: () {
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          EditNoteScreen(
+                                                              content: snap[
+                                                                  'content'],
+                                                              subject: snap[
+                                                                  'subject'],
+                                                              id: snap['id']),
+                                                    ),
+                                                  );
+                                                },
+                                                child: Row(
+                                                  children: [
+                                                    Icon(
+                                                      Icons.edit,
+                                                      color: CustomClr.kblue,
+                                                    ),
+                                                    const Text("Edit")
+                                                  ],
+                                                ),
                                               ),
                                             )
                                           ];
