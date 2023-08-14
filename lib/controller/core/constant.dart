@@ -20,4 +20,5 @@ class CustomFuction {
 
 class CustomHeight {
   static var commonHeight = const SizedBox(height: 20);
+  static var height10 = const SizedBox(height: 10);
 }

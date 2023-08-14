@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:note_app/controller/core/constant.dart';
 import 'package:note_app/presentation/screens/add_note/add_note.dart';
+import 'package:note_app/presentation/screens/note_details/note_details.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -32,18 +33,93 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           SliverList(
-            delegate: SliverChildBuilderDelegate((context, index) {
-              return Padding(
-                padding: const EdgeInsets.all(10),
-                child: ClipRRect(
-                  borderRadius: CustomSize.commonRadius,
-                  child: Container(
-                    height: 150,
-                    color: Colors.deepPurple[300],
+            delegate: SliverChildBuilderDelegate(
+              (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: ClipRRect(
+                    borderRadius: CustomSize.commonRadius,
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const NoteDetailsScreen(),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        height: 150,
+                        color: Colors.deepPurple[300],
+                        child: Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(
+                                      Icons.delete_outline_outlined,
+                                      color: CustomClr.kred,
+                                    ),
+                                  ),
+                                  IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(Icons.edit,
+                                        color: CustomClr.kblue),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    "Subject:  ",
+                                    style: CustomFuction.texttStyle(
+                                        weight: FontWeight.w500,
+                                        color: CustomClr.kblack,
+                                        size: 16),
+                                  ),
+                                  Text(
+                                    "TodayPayment",
+                                    style: CustomFuction.texttStyle(
+                                        weight: FontWeight.w500,
+                                        color: CustomClr.kblack,
+                                        size: 16),
+                                  ),
+                                ],
+                              ),
+                              CustomHeight.height10,
+                              Row(
+                                children: [
+                                  Text(
+                                    "Content: ",
+                                    style: CustomFuction.texttStyle(
+                                        weight: FontWeight.w500,
+                                        color: CustomClr.kblack,
+                                        size: 16),
+                                  ),
+                                  Text(
+                                    "................",
+                                    style: CustomFuction.texttStyle(
+                                        weight: FontWeight.w500,
+                                        color: CustomClr.kblack,
+                                        size: 16),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
-                ),
-              );
-            }, childCount: 5),
+                );
+              },
+              childCount: 5,
+            ),
           ),
         ],
       ),

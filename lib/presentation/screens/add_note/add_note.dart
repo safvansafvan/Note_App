@@ -50,23 +50,6 @@ class AddNoteScreen extends StatelessWidget {
                 ]),
           ),
         ),
-        // child: AppBar(
-        //   backgroundColor: Colors.deepPurple[300],
-        //   leading: IconButton(
-        //     onPressed: () {
-        //       Navigator.pop(context);
-        //     },
-        //     icon: Icon(
-        //       Icons.arrow_back_ios,
-        //       color: CustomClr.kwhite,
-        //     ),
-        //   ),
-        //   title: Text(
-        //     "A d d N o t e",
-        //     style: CustomFuction.texttStyle(
-        //         weight: FontWeight.w600, color: CustomClr.kwhite, size: 17),
-        //   ),
-        // ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
