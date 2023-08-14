@@ -46,9 +46,12 @@ class AddNoteScreen extends StatelessWidget {
                         if (conController.text.isNotEmpty &&
                             subController.text.isNotEmpty) {
                           await FireStore().addNotes(
+                            context: context,
                             subject: subController.text,
                             content: conController.text,
                           );
+                          conController.clear();
+                          subController.clear();
                         } else {
                           SnakBarWidget.snackBarWidget(
                               context: context,

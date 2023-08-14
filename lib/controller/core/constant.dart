@@ -4,6 +4,7 @@ class CustomClr {
   static Color kblue = Colors.blue;
   static Color deepPurple = Colors.deepPurple;
   static Color kwhite = Colors.white;
+  static Color kwhite70 = Colors.white70;
   static Color kblack = Colors.black;
   static Color kred = Colors.redAccent;
   static Color kgreen = Colors.green;

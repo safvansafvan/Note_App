@@ -5,6 +5,7 @@ import 'package:lottie/lottie.dart';
 import 'package:note_app/controller/core/constant.dart';
 import 'package:note_app/presentation/screens/add_note/add_note.dart';
 import 'package:note_app/presentation/screens/note_details/note_details.dart';
+import 'package:note_app/presentation/widgets/delete_dialog.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -73,6 +74,7 @@ class HomeScreen extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                 builder: (context) => NoteDetailsScreen(
+                                  id: snap['id'],
                                   content: snap['content'],
                                   date: DateFormat.yMEd()
                                       .format(snap['date'].toDate()),
@@ -89,49 +91,77 @@ class HomeScreen extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
-                                      IconButton(
-                                        onPressed: () {},
-                                        icon: Icon(
-                                          Icons.delete_outline_outlined,
-                                          color: CustomClr.kred,
+                                      SizedBox(
+                                        child: Row(
+                                          children: [
+                                            Text(
+                                              "Subject:  ",
+                                              style: CustomFuction.texttStyle(
+                                                  weight: FontWeight.w500,
+                                                  color: CustomClr.kwhite70,
+                                                  size: 16),
+                                            ),
+                                            Text(
+                                              snap['subject'],
+                                              style: CustomFuction.texttStyle(
+                                                weight: FontWeight.w500,
+                                                color: CustomClr.kwhite70,
+                                                size: 16,
+                                              ),
+                                            ),
+                                          ],
                                         ),
                                       ),
-                                      IconButton(
-                                        onPressed: () {},
-                                        icon: Icon(Icons.edit,
-                                            color: CustomClr.kblue),
-                                      ),
+                                      PopupMenuButton(
+                                        color: CustomClr.kwhite70,
+                                        elevation: 15,
+                                        itemBuilder: (context) {
+                                          return [
+                                            PopupMenuItem(
+                                              child: InkWell(
+                                                onTap: () {
+                                                  DeleteDialog.cupertinoDelete(
+                                                      context, snap['id']);
+                                                },
+                                                child: Row(
+                                                  children: [
+                                                    Icon(
+                                                      Icons
+                                                          .delete_outline_outlined,
+                                                      color: CustomClr.kred,
+                                                    ),
+                                                    const Text("Delete")
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                            PopupMenuItem(
+                                              onTap: () {},
+                                              child: Row(
+                                                children: [
+                                                  Icon(
+                                                    Icons.edit,
+                                                    color: CustomClr.kblue,
+                                                  ),
+                                                  const Text("Edit")
+                                                ],
+                                              ),
+                                            )
+                                          ];
+                                        },
+                                      )
                                     ],
                                   ),
-                                  Row(
-                                    children: [
-                                      Text(
-                                        "Subject:  ",
-                                        style: CustomFuction.texttStyle(
-                                            weight: FontWeight.w500,
-                                            color: CustomClr.kblack,
-                                            size: 16),
-                                      ),
-                                      Text(
-                                        snap['subject'],
-                                        style: CustomFuction.texttStyle(
-                                          weight: FontWeight.w500,
-                                          color: CustomClr.kblack,
-                                          size: 16,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  CustomHeight.height10,
                                   Row(
                                     children: [
                                       Text(
                                         "Content: ",
                                         style: CustomFuction.texttStyle(
                                             weight: FontWeight.w500,
-                                            color: CustomClr.kblack,
+                                            color: CustomClr.kwhite70,
                                             size: 16),
                                       ),
                                       Expanded(
@@ -139,7 +169,7 @@ class HomeScreen extends StatelessWidget {
                                           snap['content'],
                                           style: CustomFuction.texttStyle(
                                               weight: FontWeight.w500,
-                                              color: CustomClr.kblack,
+                                              color: CustomClr.kwhite70,
                                               size: 16),
                                           maxLines: 1,
                                           overflow: TextOverflow.ellipsis,
@@ -154,13 +184,19 @@ class HomeScreen extends StatelessWidget {
                                         "Date: ",
                                         style: CustomFuction.texttStyle(
                                             weight: FontWeight.w500,
-                                            color: CustomClr.kblack,
+                                            color: CustomClr.kwhite70,
                                             size: 16),
                                       ),
-                                      Text(DateFormat.yMEd()
-                                          .format(snap['date'].toDate()))
+                                      Text(
+                                        DateFormat.yMEd()
+                                            .format(snap['date'].toDate()),
+                                        style: CustomFuction.texttStyle(
+                                            weight: FontWeight.w500,
+                                            color: CustomClr.kwhite70,
+                                            size: 16),
+                                      )
                                     ],
-                                  )
+                                  ),
                                 ],
                               ),
                             ),
