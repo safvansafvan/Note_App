@@ -8,6 +8,7 @@ class SearchProvider extends ChangeNotifier {
   final TextEditingController searchController = TextEditingController();
   List<NoteData> allNotesForSearching = [];
   List<NoteData> foundedNotes = [];
+  bool isShowNotes = false;
   getAllNotes() async {
     try {
       QuerySnapshot<Map<String, dynamic>> snapshot =
@@ -30,11 +31,28 @@ class SearchProvider extends ChangeNotifier {
     if (searchController.text.isEmpty) {
       result = [];
     } else {
-      result = allNotesForSearching.where((element) => element.subject!
-          .toLowerCase()
-          .startsWith(searchController.text.toLowerCase())) as List<NoteData>;
+      result = allNotesForSearching
+          .where((element) => element.subject!
+              .toLowerCase()
+              .startsWith(searchController.text.toLowerCase()))
+          .toList();
     }
     foundedNotes = result;
     notifyListeners();
+  }
+
+  showNotes() {
+    isShowNotes = true;
+    notifyListeners();
+  }
+
+  hideNotes() {
+    isShowNotes = false;
+    notifyListeners();
+  }
+
+  clearController() {
+    searchController.clear();
+    isShowNotes = false;
   }
 }
