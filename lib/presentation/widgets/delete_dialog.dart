@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:note_app/controller/res/firestore.dart';
-import 'package:note_app/presentation/screens/home_screen.dart';
+import 'package:note_app/presentation/screens/home/home_screen.dart';
 
 class DeleteDialog {
   static void cupertinoDelete(context, id) {

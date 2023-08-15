@@ -9,7 +9,7 @@ class SearchProvider extends ChangeNotifier {
   List<NoteData> allNotesForSearching = [];
   List<NoteData> foundedNotes = [];
   bool isShowNotes = false;
-  getAllNotes() async {
+  Future<void> getAllNotes() async {
     try {
       QuerySnapshot<Map<String, dynamic>> snapshot =
           await FirebaseFirestore.instance.collection('notes').get();

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:note_app/controller/core/constant.dart';
-import 'package:note_app/controller/res/firestore.dart';
-import 'package:note_app/presentation/widgets/snackbar_widget.dart';
+import 'package:note_app/presentation/screens/add_note/widget/appbar.dart';
 
 class AddNoteScreen extends StatelessWidget {
   const AddNoteScreen({super.key});
@@ -13,63 +12,8 @@ class AddNoteScreen extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size(double.infinity, 100),
-        child: Container(
-          color: Colors.deepPurple[300],
-          child: Center(
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: Icon(
-                      Icons.arrow_back_ios,
-                      color: CustomClr.kwhite,
-                    ),
-                  ),
-                  Text(
-                    "A d d N o t e",
-                    style: CustomFuction.texttStyle(
-                        weight: FontWeight.w600,
-                        color: CustomClr.kwhite,
-                        size: 17),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      border: Border.all(color: CustomClr.kblack),
-                    ),
-                    child: TextButton(
-                      onPressed: () async {
-                        if (conController.text.isNotEmpty &&
-                            subController.text.isNotEmpty) {
-                          await FireStore().addNotes(
-                            context: context,
-                            subject: subController.text,
-                            content: conController.text,
-                          );
-                          conController.clear();
-                          subController.clear();
-                        } else {
-                          SnakBarWidget.snackBarWidget(
-                              context: context,
-                              title: "Add values",
-                              clr: CustomClr.kred);
-                        }
-                      },
-                      child: Text(
-                        "Save",
-                        style: CustomFuction.texttStyle(
-                            weight: FontWeight.w600,
-                            color: CustomClr.kwhite,
-                            size: 14),
-                      ),
-                    ),
-                  ),
-                ]),
-          ),
-        ),
+        child: AddNoteAppBar(
+            conController: conController, subController: subController),
       ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),

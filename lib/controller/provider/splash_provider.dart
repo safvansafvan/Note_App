@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:note_app/presentation/screens/home_screen.dart';
+import 'package:note_app/presentation/screens/home/home_screen.dart';
 
 class SplashProvider extends ChangeNotifier {
   Future<void> navigateToHome({context}) async {

@@ -8,6 +8,7 @@ class CustomClr {
   static Color kblack = Colors.black;
   static Color kred = Colors.redAccent;
   static Color kgreen = Colors.green;
+  static Color kbackground = const Color.fromRGBO(209, 196, 233, 1);
 }
 
 class CustomSize {

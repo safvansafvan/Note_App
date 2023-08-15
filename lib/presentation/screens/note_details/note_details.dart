@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:note_app/presentation/widgets/delete_dialog.dart';
+import 'package:note_app/presentation/screens/note_details/widget/appbar.dart';
 import '../../../controller/core/constant.dart';
 
 class NoteDetailsScreen extends StatelessWidget {
@@ -18,104 +18,78 @@ class NoteDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.deepPurple[100],
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: ListView(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: const Icon(Icons.arrow_back_ios),
-                  ),
-                  Text(
-                    "N o t e s",
-                    style: CustomFuction.texttStyle(
-                        weight: FontWeight.w600,
-                        color: CustomClr.kblack,
-                        size: 17),
-                  ),
-                  IconButton(
-                    onPressed: () {
-                      DeleteDialog.cupertinoDelete(context, id);
-                    },
-                    icon: Icon(
-                      Icons.delete_outline_outlined,
-                      color: CustomClr.kred,
+      appBar: PreferredSize(
+        preferredSize: const Size(double.infinity, 100),
+        child: NoteDetailsAppBar(id: id),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
+        child: ListView(
+          children: [
+            CustomHeight.commonHeight,
+            Row(
+              children: [
+                Text(
+                  "Subject:    ",
+                  style: CustomFuction.texttStyle(
+                      weight: FontWeight.w600,
+                      color: CustomClr.kblack,
+                      size: 16),
+                ),
+                Text(
+                  subject,
+                  style: CustomFuction.texttStyle(
+                      weight: FontWeight.w600,
+                      color: CustomClr.kblack,
+                      size: 16),
+                ),
+              ],
+            ),
+            CustomHeight.commonHeight,
+            Row(
+              children: [
+                Text(
+                  "Date:         ",
+                  style: CustomFuction.texttStyle(
+                      weight: FontWeight.w600,
+                      color: CustomClr.kblack,
+                      size: 16),
+                ),
+                Text(
+                  date,
+                  style: CustomFuction.texttStyle(
+                      weight: FontWeight.w600,
+                      color: CustomClr.kblack,
+                      size: 15),
+                ),
+              ],
+            ),
+            CustomHeight.commonHeight,
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Content:   ",
+                  style: CustomFuction.texttStyle(
+                      weight: FontWeight.w600,
+                      color: CustomClr.kblack,
+                      size: 16),
+                ),
+                Expanded(
+                  child: SizedBox(
+                    child: Text(
+                      content,
+                      style: CustomFuction.texttStyle(
+                          weight: FontWeight.w600,
+                          color: CustomClr.kblack,
+                          size: 15),
+                      maxLines: null,
                     ),
-                  )
-                ],
-              ),
-              CustomHeight.commonHeight,
-              Row(
-                children: [
-                  Text(
-                    "Subject:    ",
-                    style: CustomFuction.texttStyle(
-                        weight: FontWeight.w600,
-                        color: CustomClr.kblack,
-                        size: 16),
                   ),
-                  Text(
-                    subject,
-                    style: CustomFuction.texttStyle(
-                        weight: FontWeight.w600,
-                        color: CustomClr.kblack,
-                        size: 16),
-                  ),
-                ],
-              ),
-              CustomHeight.commonHeight,
-              Row(
-                children: [
-                  Text(
-                    "Date:         ",
-                    style: CustomFuction.texttStyle(
-                        weight: FontWeight.w600,
-                        color: CustomClr.kblack,
-                        size: 16),
-                  ),
-                  Text(
-                    date,
-                    style: CustomFuction.texttStyle(
-                        weight: FontWeight.w600,
-                        color: CustomClr.kblack,
-                        size: 15),
-                  ),
-                ],
-              ),
-              CustomHeight.commonHeight,
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Content:   ",
-                    style: CustomFuction.texttStyle(
-                        weight: FontWeight.w600,
-                        color: CustomClr.kblack,
-                        size: 16),
-                  ),
-                  Expanded(
-                    child: SizedBox(
-                      child: Text(
-                        content,
-                        style: CustomFuction.texttStyle(
-                            weight: FontWeight.w600,
-                            color: CustomClr.kblack,
-                            size: 15),
-                        maxLines: null,
-                      ),
-                    ),
-                  )
-                ],
-              )
-            ],
-          ),
+                )
+              ],
+            )
+          ],
         ),
       ),
     );

@@ -129,7 +129,7 @@ class NotesShowingWidget extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  "Date: ",
+                  "Created: ",
                   style: CustomFuction.texttStyle(
                       weight: FontWeight.w500,
                       color: CustomClr.kwhite70,
