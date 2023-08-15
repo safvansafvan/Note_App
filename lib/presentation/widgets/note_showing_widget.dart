@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:note_app/controller/core/constant.dart';
 import 'package:note_app/presentation/screens/edit_note/edit_note.dart';
 import 'package:note_app/presentation/widgets/delete_dialog.dart';
@@ -7,15 +6,24 @@ import 'package:note_app/presentation/widgets/delete_dialog.dart';
 class NotesShowingWidget extends StatelessWidget {
   const NotesShowingWidget({
     super.key,
-    required this.snap,
+    required this.subject,
+    required this.content,
+    this.date,
+    this.updatedDate,
+    this.id,
   });
 
-  final Map<String, dynamic> snap;
+  final String subject;
+  final String content;
+  final String? date;
+  final String? updatedDate;
+  final String? id;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.deepPurple[300],
+      decoration: BoxDecoration(
+          color: Colors.deepPurple[300], borderRadius: CustomSize.commonRadius),
       child: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Column(
@@ -35,7 +43,7 @@ class NotesShowingWidget extends StatelessWidget {
                             size: 16),
                       ),
                       Text(
-                        snap['subject'],
+                        subject,
                         style: CustomFuction.texttStyle(
                           weight: FontWeight.w500,
                           color: CustomClr.kwhite70,
@@ -53,7 +61,7 @@ class NotesShowingWidget extends StatelessWidget {
                       PopupMenuItem(
                         child: InkWell(
                           onTap: () {
-                            DeleteDialog.cupertinoDelete(context, snap['id']);
+                            DeleteDialog.cupertinoDelete(context, id);
                           },
                           child: Row(
                             children: [
@@ -73,9 +81,9 @@ class NotesShowingWidget extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                 builder: (context) => EditNoteScreen(
-                                    content: snap['content'],
-                                    subject: snap['subject'],
-                                    id: snap['id']),
+                                    content: content,
+                                    subject: subject,
+                                    id: id!),
                               ),
                             );
                           },
@@ -106,7 +114,7 @@ class NotesShowingWidget extends StatelessWidget {
                 ),
                 Expanded(
                   child: Text(
-                    snap['content'],
+                    content,
                     style: CustomFuction.texttStyle(
                         weight: FontWeight.w500,
                         color: CustomClr.kwhite70,
@@ -128,7 +136,26 @@ class NotesShowingWidget extends StatelessWidget {
                       size: 16),
                 ),
                 Text(
-                  DateFormat.yMEd().format(snap['date'].toDate()),
+                  date ?? "",
+                  style: CustomFuction.texttStyle(
+                      weight: FontWeight.w500,
+                      color: CustomClr.kwhite70,
+                      size: 16),
+                )
+              ],
+            ),
+            CustomHeight.height10,
+            Row(
+              children: [
+                Text(
+                  "Updated: ",
+                  style: CustomFuction.texttStyle(
+                      weight: FontWeight.w500,
+                      color: CustomClr.kwhite70,
+                      size: 16),
+                ),
+                Text(
+                  updatedDate ?? "",
                   style: CustomFuction.texttStyle(
                       weight: FontWeight.w500,
                       color: CustomClr.kwhite70,

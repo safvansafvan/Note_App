@@ -100,7 +100,17 @@ class HomeScreen extends StatelessWidget {
                               ),
                             );
                           },
-                          child: NotesShowingWidget(snap: snap),
+                          child: NotesShowingWidget(
+                            content: snap['content'],
+                            date:
+                                DateFormat.yMEd().format(snap['date'].toDate()),
+                            updatedDate: snap['editdate'] != null
+                                ? DateFormat.yMEd()
+                                    .format(snap['editdate'].toDate())
+                                : "Not updated",
+                            id: snap['id'],
+                            subject: snap['subject'],
+                          ),
                         ),
                       ),
                     );

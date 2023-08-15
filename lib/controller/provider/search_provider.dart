@@ -17,8 +17,11 @@ class SearchProvider extends ChangeNotifier {
       for (QueryDocumentSnapshot<Map<String, dynamic>> document
           in snapshot.docs) {
         Map<String, dynamic> data = document.data();
-        allNotesForSearching
-            .add(NoteData(content: data['content'], subject: data['subject']));
+        allNotesForSearching.add(NoteData(
+            content: data['content'],
+            subject: data['subject'],
+            date: data['date'].toString(),
+            updatedDate: data['editdate'].toString()));
       }
     } catch (e) {
       log(e.toString());
