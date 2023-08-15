@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:note_app/controller/provider/search_provider.dart';
 import 'package:note_app/controller/provider/splash_provider.dart';
 import 'package:note_app/presentation/screens/splash/splash.dart';
 import 'package:provider/provider.dart';
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => SplashProvider())
+        ChangeNotifierProvider(create: (context) => SplashProvider()),
+        ChangeNotifierProvider(create: (context) => SearchProvider())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

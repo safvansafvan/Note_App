@@ -6,6 +6,7 @@ import 'package:note_app/controller/core/constant.dart';
 import 'package:note_app/presentation/screens/add_note/add_note.dart';
 import 'package:note_app/presentation/screens/edit_note/edit_note.dart';
 import 'package:note_app/presentation/screens/note_details/note_details.dart';
+import 'package:note_app/presentation/screens/search_screen/search_screen.dart';
 import 'package:note_app/presentation/widgets/delete_dialog.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -22,6 +23,22 @@ class HomeScreen extends StatelessWidget {
               onPressed: () {},
               icon: Icon(Icons.menu, color: CustomClr.kwhite),
             ),
+            actions: [
+              IconButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SearchScreen(),
+                    ),
+                  );
+                },
+                icon: Icon(
+                  Icons.search,
+                  color: CustomClr.kwhite,
+                ),
+              )
+            ],
             backgroundColor: Colors.deepPurple[400],
             expandedHeight: 200,
             floating: false,
