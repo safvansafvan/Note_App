@@ -44,6 +44,7 @@ class EditNoteScreen extends StatelessWidget {
             SizedBox(
               child: TextFormField(
                 controller: editContentController,
+                initialValue: content,
                 maxLines: null,
                 decoration: InputDecoration(
                   border: InputBorder.none,
