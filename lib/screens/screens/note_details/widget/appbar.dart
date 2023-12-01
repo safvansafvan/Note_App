@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:note_app/controller/core/constant.dart';
-import 'package:note_app/presentation/widgets/delete_dialog.dart';
+import 'package:note_app/screens/widgets/delete_dialog.dart';
 
 class NoteDetailsAppBar extends StatelessWidget {
   const NoteDetailsAppBar({

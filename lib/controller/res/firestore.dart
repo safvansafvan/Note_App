@@ -2,7 +2,7 @@ import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:note_app/controller/core/constant.dart';
-import 'package:note_app/presentation/widgets/snackbar_widget.dart';
+import 'package:note_app/screens/widgets/snackbar_widget.dart';
 import 'package:uuid/uuid.dart';
 
 class FireStore {

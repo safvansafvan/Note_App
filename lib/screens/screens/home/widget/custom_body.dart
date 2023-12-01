@@ -3,14 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
 import 'package:note_app/controller/core/constant.dart';
-import 'package:note_app/presentation/screens/note_details/note_details.dart';
-import 'package:note_app/presentation/screens/search_screen/search_screen.dart';
-import 'package:note_app/presentation/widgets/note_showing_widget.dart';
+import 'package:note_app/screens/screens/note_details/note_details.dart';
+import 'package:note_app/screens/screens/search_screen/search_screen.dart';
+import 'package:note_app/screens/widgets/note_showing_widget.dart';
 
 class CustomBodyView extends StatelessWidget {
-  const CustomBodyView({
-    super.key,
-  });
+  const CustomBodyView({super.key});
 
   @override
   Widget build(BuildContext context) {

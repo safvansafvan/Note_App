@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
 import 'package:note_app/controller/provider/search_provider.dart';
-import 'package:note_app/presentation/widgets/note_showing_widget.dart';
+import 'package:note_app/screens/widgets/note_showing_widget.dart';
 import 'package:provider/provider.dart';
 
 class SearchResultWidget extends StatelessWidget {

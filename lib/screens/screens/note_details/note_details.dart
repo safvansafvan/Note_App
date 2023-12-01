@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:note_app/presentation/screens/note_details/widget/appbar.dart';
+import 'package:note_app/screens/screens/note_details/widget/appbar.dart';
 import '../../../controller/core/constant.dart';
 
 class NoteDetailsScreen extends StatelessWidget {

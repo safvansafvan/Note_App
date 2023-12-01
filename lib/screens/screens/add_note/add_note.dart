@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:note_app/controller/core/constant.dart';
-import 'package:note_app/presentation/screens/add_note/widget/appbar.dart';
+import 'package:note_app/screens/screens/add_note/widget/appbar.dart';
 
 class AddNoteScreen extends StatelessWidget {
   const AddNoteScreen({super.key});

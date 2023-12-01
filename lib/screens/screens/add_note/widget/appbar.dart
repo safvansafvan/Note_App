@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:note_app/controller/core/constant.dart';
 import 'package:note_app/controller/res/firestore.dart';
-import 'package:note_app/presentation/widgets/snackbar_widget.dart';
+import 'package:note_app/screens/widgets/snackbar_widget.dart';
 
 class AddNoteAppBar extends StatelessWidget {
   const AddNoteAppBar({

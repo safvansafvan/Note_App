@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:note_app/controller/core/constant.dart';
 import 'package:note_app/controller/res/firestore.dart';
-import 'package:note_app/presentation/screens/home/home_screen.dart';
-import 'package:note_app/presentation/widgets/snackbar_widget.dart';
+import 'package:note_app/screens/screens/home/home_screen.dart';
+import 'package:note_app/screens/widgets/snackbar_widget.dart';
 
 class EditNoteAppBar extends StatelessWidget {
   const EditNoteAppBar({

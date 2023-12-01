@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:note_app/controller/provider/search_provider.dart';
 import 'package:note_app/controller/provider/splash_provider.dart';
-import 'package:note_app/presentation/screens/splash/splash.dart';
+import 'package:note_app/screens/screens/splash/splash.dart';
 import 'package:provider/provider.dart';
 
 void main() async {

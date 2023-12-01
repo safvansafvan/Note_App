@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:note_app/controller/core/constant.dart';
-import 'package:note_app/presentation/screens/edit_note/edit_note.dart';
-import 'package:note_app/presentation/widgets/delete_dialog.dart';
+import 'package:note_app/screens/screens/edit_note/edit_note.dart';
+import 'package:note_app/screens/widgets/delete_dialog.dart';
 
 class NotesShowingWidget extends StatelessWidget {
   const NotesShowingWidget({

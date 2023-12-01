@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:note_app/controller/provider/search_provider.dart';
-import 'package:note_app/presentation/screens/search_screen/widget/search_result.dart';
+import 'package:note_app/screens/screens/search_screen/widget/search_result.dart';
 import 'package:provider/provider.dart';
 
 class SearchScreen extends StatelessWidget {
